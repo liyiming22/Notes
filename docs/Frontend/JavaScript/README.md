@@ -35,3 +35,16 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);  
 const {foo} = require('./foo.cjs');
 ```
+
+## Promise
+`Promise.catch` 只是 `promise.then(undefined, onRejected);` 方法的一个别名。也就是说，这个方法用来注册当 `promise` 对象状态变为 `Rejected` 时的回调。
+
+静态方法 `Promise.resolve(value)` 可以认为是 `new Promise()` 方法的快捷方式。
+```javascript
+Promise.resolve('foo');
+
+new Promise((resolve) => { resolve('foo') });
+```
+
+
+每次调用 `then` 方法都会返回一个**新**`promise` 对象。
