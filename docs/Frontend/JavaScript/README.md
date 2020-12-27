@@ -47,4 +47,4 @@ new Promise((resolve) => { resolve('foo') });
 ```
 
 
-每次调用 `then` 方法都会返回一个**新**`promise` 对象。
+每次调用 `then` 方法都会返回一个**新** `promise` 对象。
