@@ -59,3 +59,57 @@ function curry(fnc) {
   }
 }
 ```
+
+## 偏函数
+用于固定一个函数的一个或者多个参数，并返回一个可以接收剩余参数的函数。
+```javascript
+function partial(fn) {
+  const args = [].slice.call(arguments, 1)
+  return function() {
+    const newArgs = args.concat([].slice.call(arguments))
+    return fn.apply(this, newArgs)
+  }
+}
+```
+
+## 惰性载入函数
+当第 1 次根据条件执行函数后，在第 2 次调用函数时，就不再检测条件，直接执行函数。
+两种方式来实现：
+### 覆盖函数名
+```javascript
+function addHandler(element, type, handler) {
+  if (element.addEventListener) {
+    addHandler = function (element, type, handler) {
+      element.addEventListener(type, handler, false);
+    };
+  } else if (element.attachEvent) {
+    addHandler = function (element, type, handler) {
+      element.attachEvent("on" + type, handler);
+    };
+  } else {
+    addHandler = function (element, type, handler) {
+      element["on" + type] = handler;
+    };
+  }
+  // 保证首次调用能正常执行监听
+  return addHandler(element, type, handler);
+}
+```
+### 自执行函数
+```javascript
+const addHandler = (function () {
+  if (document.addEventListener) {
+    return function (element, type, handler) {
+      element.addEventListener(type, handler, false);
+    };
+  } else if (document.attachEvent) {
+    return function (element, type, handler) {
+      element.attachEvent("on" + type, handler);
+    };
+  } else {
+    return function (element, type, handler) {
+      element["on" + type] = handler;
+    };
+  }
+})();
+```
