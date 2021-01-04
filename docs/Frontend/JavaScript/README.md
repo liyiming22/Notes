@@ -48,3 +48,37 @@ new Promise((resolve) => { resolve('foo') });
 
 
 每次调用 `then` 方法都会返回一个**新** `promise` 对象。
+
+
+## 对象
+### Js 对象的两种属性
+数据属性（_data properties_）和访问器属性（_accessor properties_）
+### Data properties
+- `configurable`: 默认为 `true`。当 `configurable` 为 `false` 时，表示修饰的属性不可被删除、更改，不能被转化为访问器属性。(注意此操作不可逆，并且内部属性除了 `writable` 之外再使用 `Object.defineProperty` 会抛出错误)
+
+- `enumerable`：默认为 `true`，在 `for-in` 循环中 return。
+
+- `writable`：默认为 `true`。
+
+- `value`
+
+::: danger
+注意，以上所说的默认为 `true` 是字面量定义对象属性的时候。如果通过 `Object.defineProperty` 定义的属性，均为 `false`。
+:::
+
+```javascript
+const test = {}
+Object.defineProperty(test, 'name', {
+    value: 333
+})
+```
+### Accessor properties
+对象只有 `getter` 的属性无法被改写，在非严格模式下会被忽略，严格模式下会抛出错误。
+
+对象只有 `setter` 的属性无法被读取，在非严格模式下会返回 `undefined`，严格模式下会抛出错误。
+### 合并对象
+```javascript
+const dest = {}
+const res = Object.assign(dest, { id: 1 })
+console.log(res === dest)   // true
+```
