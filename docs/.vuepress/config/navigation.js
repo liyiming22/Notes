@@ -18,7 +18,7 @@ const navigation = [
   {
     text: 'Find Me',
     items: [
-      { text: 'Github', link: 'https://github.com/liyming22', target: '_blank' },
+      { text: 'Github', link: 'https://github.com/liyiming22', target: '_blank' },
       { text: 'StackOverflow', link: 'https://stackoverflow.com/users/9120653/liam-1997', target: '_blank' },
       { text: '掘金', link: 'https://juejin.im/user/1978776662064520/', target: '_blank' },
     ]
