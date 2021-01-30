@@ -8,7 +8,7 @@ const navigation = [
     items: [
       { text: 'JavaScript', link: '/Frontend/JavaScript/' },
       { text: 'Node', link: '/Frontend/Node/' },
-      { text: 'React', link: '/Frontend/React/' },
+      { text: 'React', link: '/Frontend/React/Hooks/' },
     ]
   },
   {

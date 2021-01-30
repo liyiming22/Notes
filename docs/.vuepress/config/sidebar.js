@@ -10,7 +10,8 @@ const sidebar = [
     title: 'React',
     collapsable: true,
     children: [
-      '/Frontend/React/'
+      '/Frontend/React/Hooks/',
+      '/Frontend/React/Patterns/',
     ]
   },
   {

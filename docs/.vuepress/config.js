@@ -3,7 +3,7 @@ const sidebar = require('./config/sidebar');
 
 module.exports = {
   title: 'Notes',
-  description: '一鸣的 CS 技术简记',
+  description: 'CS 技术简记',
   base: '/Notes/',
   themeConfig: {
     displayAllHeaders: false,
