@@ -15,6 +15,14 @@ const sidebar = [
     ]
   },
   {
+    title: 'Tools',
+    collapsable: true,
+    children: [
+      '/Tools/Git/',
+      '/Tools/Vim/',
+    ]
+  },
+  {
     title: 'FP',
     collapsable: true,
     children: [

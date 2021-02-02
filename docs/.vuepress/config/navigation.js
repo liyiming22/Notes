@@ -12,6 +12,13 @@ const navigation = [
     ]
   },
   {
+    text: 'Tools',
+    items: [
+      { text: 'Git', link: '/Tools/Git/' },
+      { text: 'Vim', link: '/Tools/Vim/' },
+    ]
+  },
+  {
     text: 'FP',
     link: '/FP/'
   },
