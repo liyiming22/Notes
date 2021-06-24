@@ -36,6 +36,13 @@ const sidebar = [
       '/Frontend/Node/'
     ]
   },
+  {
+    title: '工程化',
+    collapsable: true,
+    children: [
+      '/Frontend/Webpack/'
+    ]
+  },
 ];
 
 module.exports = sidebar;
