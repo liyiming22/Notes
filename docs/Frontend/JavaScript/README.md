@@ -82,3 +82,71 @@ const dest = {}
 const res = Object.assign(dest, { id: 1 })
 console.log(res === dest)   // true
 ```
+
+## `Promise.resolve` vs `new Promise(resolve => resolve())`
+
+> The Promise.resolve() method returns a Promise object that is resolved with a given value. If the value is a promise, that promise is returned; if the value is a thenable (i.e. has a "then" method), the returned promise will "follow" that thenable, adopting its eventual state; otherwise the returned promise will be fulfilled with the value. This function flattens nested layers of promise-like objects (e.g. a promise that resolves to a promise that resolves to something) into a single layer.
+
+1. 如果传入的值是一个 `Promise`，那么回调的方式会产生两次额外的 tick，看以下代码:
+
+```javascript
+const p = new Promise(resovle => setTimeout(resovle));
+
+new Promise(resolve => resolve(p)).then(() => {
+  console.log("tick 4");
+});
+
+p.then(() => {
+  console.log("tick 1");
+}).then(() => {
+  console.log("tick 2");
+}).then(() => {
+  console.log("tick 3");
+})
+
+tick 1
+tick 2
+tick 4
+tick 3
+```
+
+```javascript
+const p = new Promise(resolve => setTimeout(resolve));
+
+Promise.resolve(p).then(() => {
+  console.log("tick 4");
+});
+
+p.then(() => {
+  console.log("tick 1");
+}).then(() => {
+  console.log("tick 2");
+}).then(() => {
+  console.log("tick 3");
+});
+
+tick 4
+tick 1
+tick 2
+tick 3
+```
+
+如果传入 `Promise.resolve()` 值为一个 `Promise`，那么 `Promise.resolve(value) === value`
+
+2. 如果传入一个 `undefined` 值，`Promise.resolve` 会以同步的方式抛出错误，而回调的形式会返回一个 `rejected` 的 `Promise`。
+```javascript
+function someFunction(someObject) {
+  someObject.resolved = true;
+  return Promise.resolve(someObject);
+}
+
+function someFunction(someObject) {
+  return new Promise(function(resolve) {
+    someObject.resolved = true;
+    resolve(someObject);
+  });
+}
+```
+
+参考 [stackoverflow](https://stackoverflow.com/questions/26711243/promise-resolve-vs-new-promiseresolve)
+参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
