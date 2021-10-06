@@ -1,44 +1,54 @@
 const sidebar = [
   {
-    title: 'JavaScript',
+    text: 'JavaScript',
     collapsable: true,
+    link: '/Frontend/',
     children: [
-      '/Frontend/JavaScript/'
+      {
+        text: 'JavaScript',
+        link: '/Frontend/JavaScript/',
+        children: [],
+      },
     ]
   },
   {
-    title: 'React',
+    text: 'React',
     collapsable: true,
+    link: '/React/',
     children: [
       '/Frontend/React/Hooks/',
       '/Frontend/React/Patterns/',
     ]
   },
   {
-    title: 'Tools',
+    text: 'Tools',
     collapsable: true,
+    link: '/Tools/',
     children: [
       '/Tools/Git/',
       '/Tools/Vim/',
     ]
   },
   {
-    title: 'FP',
+    text: 'FP',
     collapsable: true,
+    link: '/FP/',
     children: [
       '/FP/'
     ]
   },
   {
-    title: 'Node',
+    text: 'Node',
     collapsable: true,
+    link: '/Node/',
     children: [
       '/Frontend/Node/'
     ]
   },
   {
-    title: '工程化',
+    text: '工程化',
     collapsable: true,
+    link: '/Webpack/',
     children: [
       '/Frontend/Webpack/'
     ]

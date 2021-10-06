@@ -9,16 +9,7 @@ module.exports = {
     displayAllHeaders: false,
     smoothScroll: true,
     lastUpdated: 'Last Updated',
-    nav: navigation,
+    navbar: navigation,
     sidebar
   },
-  plugins: [
-    ['@vuepress/back-to-top'],
-    [
-      '@vuepress/medium-zoom',
-      {
-        selector: ".theme-default-content :not(a) > img"
-      }
-    ],
-  ]
 }
